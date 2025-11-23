@@ -6,6 +6,7 @@ import requests
 import os
 import warnings
 import json
+import os
 
 warnings.filterwarnings("ignore", category=UserWarning)
 
@@ -127,7 +128,11 @@ demo = gr.Interface(
     description="Upload a skin image to detect conditions and get Ayurvedic remedies instantly."
 )
 
+
 if __name__ == "__main__":
-    demo.launch(server_name="0.0.0.0", server_port=10000)
+    port = int(os.getenv("PORT", 7860))  # Render sets PORT env var
+    demo.launch(server_name="0.0.0.0", server_port=port)
+
+
 
 
